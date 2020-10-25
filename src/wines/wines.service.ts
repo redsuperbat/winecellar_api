@@ -13,15 +13,23 @@ export class WinesService {
   ) {}
 
   async getAllByCellar(cellarId: number) {
-    return this.winesRepository.find({ cellar: { id: cellarId } });
+    return this.winesRepository.find({
+      relations: ['country', 'wineType', 'producer', 'district', 'grapes'],
+      where: { cellar: cellarId }
+    });
   }
 
   async getAll() {
-    return this.winesRepository.find({});
+    return this.winesRepository.find({
+      relations: ['country', 'wineType', 'producer', 'district', 'grapes']
+    });
   }
 
   async getById(wineId: number) {
-    return this.winesRepository.find({ id: wineId });
+    return this.winesRepository.find({
+      relations: ['country', 'wineType', 'producer', 'district', 'grapes'],
+      where: { id: wineId }
+    });
   }
 
   async createOne(createWineDto: CreateWineDTO) {

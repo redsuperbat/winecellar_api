@@ -20,6 +20,7 @@ import { ProducersModule } from './producers/producers.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './common/guards/auth.guard';
 import { JwtModule } from '@nestjs/jwt';
+import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [
@@ -39,9 +40,10 @@ import { JwtModule } from '@nestjs/jwt';
     GrapesModule,
     WineTypesModule,
     CellarsModule,
-    ProducersModule
+    ProducersModule,
+    ImagesModule
   ],
   controllers: [AppController],
-  providers: [AppService, { provide: APP_GUARD, useClass: AuthGuard }]
+  providers: [AppService]
 })
 export class AppModule {}

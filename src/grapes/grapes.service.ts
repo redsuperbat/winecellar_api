@@ -19,6 +19,6 @@ export class GrapesService {
   }
 
   async getAll() {
-    return this.grapesRepository.find({});
+    return this.grapesRepository.find({ relations: ['country', 'district'] });
   }
 }
